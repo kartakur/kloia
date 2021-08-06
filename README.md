@@ -1,5 +1,9 @@
 # kloia
 Demo project for kloia
+ - Article url --> http://localhost:9092/
+ - Review url --> http://localhost:9091/
+ - Health check --> GET <Review/Article_url>/actuator/health
+
   * POST /articles  --  Save posted article entity to DB
   * PUT /articles/{articleId}  --  Update article entity by ID with given artibutes
   * DELETE /articles/{articleId}  --  Delete article by ID
