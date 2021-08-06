@@ -1,0 +1,51 @@
+version: '3.4'
+
+x-common-variables: &common-variables
+    DB_EXECUTE: $DB_EXECUTE
+    DB_SERVER: jdbc:mysql://$DB_SERVER_HOST:3306/$DATABASE_NAME?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true&characterEncoding=UTF-8&serverTimezone=UTC&useTimezone=true
+    DB_USERNAME: $MYSQL_USER
+    DB_PASSWORD: $MYSQL_PASSWORD
+    BASIC_USERNAME: $BASIC_USERNAME
+    BASIC_PASSWORD: $BASIC_PASSWORD
+    DIALECT_TYPE: org.hibernate.dialect.MySQL57InnoDBDialect
+
+services:
+    article:
+        container_name: article_cont
+        build:
+          context: .
+          dockerfile: articleDocker
+        environment:
+            <<: *common-variables
+        volumes:
+             - ../logs:/usr/src/kloia/logs
+        ports:
+            - "9092:9092"
+        restart:
+            unless-stopped
+        networks:
+            kloia-local:
+                ipv4_address: 148.14.72.200
+                
+    review:
+        container_name: review_cont
+        build:
+          context: .
+          dockerfile: reviewDocker
+        environment:
+            <<: *common-variables
+        volumes:
+             - ../logs:/usr/src/kloia/logs
+        networks:
+            kloia-local:
+                ipv4_address: 148.14.72.21
+        ports:
+            - "9091:9091"
+        restart:
+            unless-stopped
+            
+networks:
+    kloia-local:
+        external: true
+        
+        

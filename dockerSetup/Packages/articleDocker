@@ -1,0 +1,11 @@
+FROM openjdk:8-jre-alpine
+COPY article-0.0.1-SNAPSHOT.jar /usr/src/kloia/
+WORKDIR /usr/src/kloia
+
+ENTRYPOINT ["java", "-jar",\
+"-Dspring.datasource.url=${DB_SERVER}","-Dspring.jpa.hibernate.ddl-auto=${DB_EXECUTE}",\
+"-Dspring.datasource.username=${DB_USERNAME}",\
+"-Dspring.datasource.password=${DB_PASSWORD}",\
+"-Dspring.jpa.properties.hibernate.dialect=${DIALECT_TYPE}",\
+"-DbasicUsername=${BASIC_USERNAME}","-DbasicPassword=${BASIC_PASSWORD}",\
+"article-0.0.1-SNAPSHOT.jar"]
