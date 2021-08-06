@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+
+    <appender  name="custom-file" class="ch.qos.logback.core.FileAppender">
+        <append>true</append>
+        <file>./logs/Review_Api.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36}.%M - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+
+    <springProfile name="release">
+        <logger name="com.kloia" >
+            <appender-ref ref="custom-file" />
+        </logger>
+    </springProfile>
+</configuration>
