@@ -18,6 +18,7 @@ Demo project for kloia
 
  * First create docker network
    - docker network create --driver bridge --subnet=148.14.72.0/24 kloia-local
+ * Go to dockerSetup directory from command prompt
  * If you have Gıt Bash or any other way to run bash script on Windows
    - ./kloiaSetup.sh -a up -km
  * If not simply run kloiaSetup.bat
