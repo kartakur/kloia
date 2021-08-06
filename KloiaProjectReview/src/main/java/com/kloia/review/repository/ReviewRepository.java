@@ -11,6 +11,7 @@ import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.querydsl.binding.SingleValueBinding;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long>, QuerydslPredicateExecutor<Review>, QuerydslBinderCustomizer<QReview> {
@@ -20,6 +21,8 @@ public interface ReviewRepository extends JpaRepository<Review, Long>, QuerydslP
     }
 
 
+    @Transactional
     void deleteReviewById(Long reviewId);
+
     Review findReviewById(Long reviewId);
 }

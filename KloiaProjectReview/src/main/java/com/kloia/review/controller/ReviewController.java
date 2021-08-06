@@ -169,7 +169,7 @@ public class ReviewController {
 
 
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(reviewService.saveReview(review));
+            return ResponseEntity.status(HttpStatus.OK).body(reviewService.saveReview(oldReview));
         }catch (Exception e){
             log.error("Updating Review to DB Failed - Exception: " + e.toString());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Updating review Failed");
