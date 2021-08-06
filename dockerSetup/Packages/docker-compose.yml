@@ -34,6 +34,7 @@ services:
           dockerfile: reviewDocker
         environment:
             <<: *common-variables
+            ARTICLE_PATH: http://148.14.72.200:9092/
         volumes:
              - ../logs:/usr/src/kloia/logs
         networks:

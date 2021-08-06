@@ -7,4 +7,5 @@ CMD ["java", "-jar",\
 "-Dspring.datasource.password=${DB_PASSWORD}",\
 "-Dspring.jpa.properties.hibernate.dialect=${DIALECT_TYPE}",\
 "-DbasicUsername=${BASIC_USERNAME}","-DbasicPassword=${BASIC_PASSWORD}",\
+"-DarticlePath=${ARTICLE_PATH}",\
 "review-0.0.1-SNAPSHOT.jar"]
